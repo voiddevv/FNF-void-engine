@@ -57,8 +57,6 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
-		if (StoryMenuState.weekUnlocked[2])
-			addWeek(['Test'], 1, ['bf-pixel']);
 
 		if (StoryMenuState.weekUnlocked[2])
 			addWeek(['Tutorial'], 1, ['gf']);

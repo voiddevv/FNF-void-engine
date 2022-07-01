@@ -885,7 +885,7 @@ class PlayState extends MusicBeatState
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
-		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
+		healthBar.createFilledBar(0xFFD12222, 0xFF66FF33);
 		// healthBar
 		add(healthBar);
 
@@ -2648,13 +2648,7 @@ class PlayState extends MusicBeatState
 			}
 			else if (possibleNotes.length > 0)
 			{
-				for (i in 0...controlArray.length)
-				{
-					if (controlArray[i] && !ignoreList.contains(i))
-					{
-						badNoteHit();
-					}
-				}
+				
 				for (possibleNote in possibleNotes)
 				{
 					if (controlArray[possibleNote.noteData])
@@ -2663,8 +2657,7 @@ class PlayState extends MusicBeatState
 					}
 				}
 			}
-			else
-				badNoteHit();
+			
 		}
 		if (boyfriend.holdTimer > 0.004 * Conductor.stepCrochet && !holdingArray.contains(true) && boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss'))
 		{
@@ -2728,24 +2721,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function badNoteHit()
-	{
-		// just double pasting this shit cuz fuk u
-		// REDO THIS SYSTEM!
-		var leftP = controls.NOTE_LEFT_P;
-		var downP = controls.NOTE_DOWN_P;
-		var upP = controls.NOTE_UP_P;
-		var rightP = controls.NOTE_RIGHT_P;
-
-		if (leftP)
-			noteMiss(0);
-		if (downP)
-			noteMiss(1);
-		if (upP)
-			noteMiss(2);
-		if (rightP)
-			noteMiss(3);
-	}
+	
 
 	function goodNoteHit(note:Note):Void
 	{

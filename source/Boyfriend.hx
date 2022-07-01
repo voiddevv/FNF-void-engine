@@ -9,6 +9,8 @@ using StringTools;
 
 class Boyfriend extends Character
 {
+	public var stunned:Bool = false;
+	public var startedDeath:Bool = false;
 
 	public function new(x:Float, y:Float, ?char:String = 'bf')
 	{
@@ -28,58 +30,15 @@ class Boyfriend extends Character
 
 			if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished && !debugMode)
 			{
-				idleEnd();
+				playAnim('idle', true, false, 10);
 			}
 
-			if (animation.curAnim.name == 'firstDeath' && animation.curAnim.finished)
+			if (animation.curAnim.name == 'firstDeath' && animation.curAnim.finished && startedDeath)
 			{
 				playAnim('deathLoop');
 			}
 		}
 
 		super.update(elapsed);
-	}
-
-	override public function idleEnd(?ignoreDebug:Bool = false)
-	{
-		if (!debugMode || ignoreDebug)
-		{
-			switch (curCharacter)
-			{
-				case "gf" | "gf-car" | "gf-christmas" | "gf-pixel" | "spooky":
-					playAnim('danceRight', true, false, animation.getByName('danceRight').numFrames - 1);
-				
-				default:
-					playAnim('idle', true, false, animation.getByName('idle').numFrames - 1);
-			}
-		}
-	}
-
-	override public function dance(?ignoreDebug:Bool = false) {
-
-		if (!debugMode || ignoreDebug)
-		{
-			switch(curCharacter){
-
-				case "gf" | "gf-car" | "gf-christmas" | "gf-pixel" | "spooky":
-					if (!animation.curAnim.name.startsWith('sing'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight', true);
-						else
-							playAnim('danceLeft', true);
-					}	
-
-				default:
-					if (!animation.curAnim.name.startsWith('sing'))
-					{
-						playAnim('idle', true);
-					}
-
-			}
-		}
-		
 	}
 }

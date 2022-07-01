@@ -1,2 +1,2 @@
 # FNF-void-engine
-void is a wip fnf fan engine based off fps plus by rosebud
+void engine is a wip fnf fan engine based off fps plus by rosebud

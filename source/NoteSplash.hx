@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
@@ -28,13 +29,13 @@ class NoteSplash extends FlxSprite
 		animation.curAnim.frameRate += FlxG.random.int(-2, 2);
 		updateHitbox();
 		offset.set(width * 0.3, height * 0.3);
+		clone;
 	}
 
 	override public function update(elapsed:Float)
 	{
 		if (animation.curAnim.finished)
 			kill();
-		
 		super.update(elapsed);
 	}
 }

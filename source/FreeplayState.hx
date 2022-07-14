@@ -49,7 +49,7 @@ class FreeplayState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("freeplay", null);
 		#end
 
 		if (!FlxG.sound.music.playing)
